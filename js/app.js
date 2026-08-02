@@ -32,7 +32,7 @@ let touchStart = {x:0,y:0};
 // detect device
 const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
 
-function init(){
+async function init(){
   scene = new THREE.Scene();
   scene.fog = new THREE.Fog(0x0d1f1c, 14, 34);
 
@@ -62,6 +62,8 @@ function init(){
 
   buildCatalogKiosk(7.5, -8.4, 0);
   buildPlayer();
+
+  await loadLibrary();
 
   // bookshelves
   buildBookshelf({
@@ -113,5 +115,5 @@ function init(){
 }
 
 // start the experience
-init(); // builds the scene
-animate(); // starts the render loop in loop.js
+// builds the scene then starts the render loop in loop.js once init returns a promise
+init().then(animate); 
