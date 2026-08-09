@@ -41,7 +41,7 @@ async function init(){
 
   renderer = new THREE.WebGLRenderer({ antialias:true });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setSize(window.innerWidth, window.innerHeight, false);
 
   // enable shadow maps to cast shadows on objs
   renderer.shadowMap.enabled = true;
